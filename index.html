@@ -13,13 +13,13 @@
 <body onresize="DefinirTamanhoTela(); CriarPosicaoAleatoria();">
     <script>DefinirTamanhoTela();</script>
     <script>CriarPosicaoAleatoria();</script>
-    <script>setInterval(CriarMoscas, 1500)</script>
+    <script>setInterval(ControlarMoscas, 1500)</script>
 
     <div class="hud">
         <div class="vidas">
-            <img src="assets/coracao_cheio.png" alt="">
-            <img src="assets/coracao_cheio.png" alt="">
-            <img src="assets/coracao_cheio.png" alt="">
+            <img id="vida3" src="assets/coracao_cheio.png" alt="">
+            <img id="vida2" src="assets/coracao_cheio.png" alt="">
+            <img id="vida1" src="assets/coracao_cheio.png" alt="">
         </div>
 
         <div class="cronometro">

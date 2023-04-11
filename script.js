@@ -5,6 +5,7 @@ var tipoDeMosca;
 var isFlipped;
 var coordenadaX;
 var coordenadaY;
+var vidas = 3;
 
 
 
@@ -40,6 +41,8 @@ function EscolherTipoMosca() {
     }
 }
 
+/*Função que determina aleatoriamente se a mosca será
+exibida "olhando" para esquerda ou direita*/ 
 function Flipar() {
     isFlipped = Math.floor(Math.random() * 2) + 1;
 
@@ -49,20 +52,39 @@ function Flipar() {
     }
 }
 
-function CriarMoscas() {
-    if (document.getElementById('mosca')) {
-        document.getElementById('mosca').remove();
+function ControlarMoscas() {
+    if (vidas == 0) {
+        alert('game over')
     }
 
+    //caso já haja um elemento mosca na tela, elimina-o antes de criar outro
+    if (document.getElementById('mosca')) {
+        document.getElementById('mosca').remove();
+        
+        document.getElementById('vida' + vidas).src = 'assets/coracao_vazio.png';
+        vidas--;
+    }
+
+       
+    
     var mosca = document.createElement('img');
     mosca.src = 'assets/mosca.png';
     mosca.id = 'mosca';
+    //determina classes do elemento mosca de acordo com retorno das funções
     mosca.className = EscolherTipoMosca() + ' ' + Flipar();
 
+    //elemento mosca recebe valores para determinar seu posicionamento em relação ao body
     CriarPosicaoAleatoria();
     mosca.style.position = 'absolute';
     mosca.style.left = coordenadaX + 'px';
     mosca.style.top = coordenadaY + 'px';
 
-    document.body.appendChild(mosca);
+    mosca.onclick = function() {
+        this.remove();
+    }
+
+    if (vidas > 0) {
+        //adiciona o elemento mosca ao body
+        document.body.appendChild(mosca);
+    }
 }
