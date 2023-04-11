@@ -6,7 +6,23 @@ var isFlipped;
 var coordenadaX;
 var coordenadaY;
 var vidas = 3;
+var tempo = 10;
+var cronometro;
 
+
+//Modificadores de atributos
+
+cronometro = setInterval(
+    function() {
+        if (tempo < 0) {
+            clearInterval(cronometro);
+            window.location.href = 'vitoria.html';
+        } else {
+            document.getElementById('tempo').innerHTML = tempo;
+            tempo--;
+        }
+    }, 1000
+);
 
 
 //Funções
@@ -54,7 +70,7 @@ function Flipar() {
 
 function ControlarMoscas() {
     if (vidas == 0) {
-        alert('game over')
+        window.location.href = 'gameover.html';
     }
 
     //caso já haja um elemento mosca na tela, elimina-o antes de criar outro
@@ -64,8 +80,6 @@ function ControlarMoscas() {
         document.getElementById('vida' + vidas).src = 'assets/coracao_vazio.png';
         vidas--;
     }
-
-       
     
     var mosca = document.createElement('img');
     mosca.src = 'assets/mosca.png';
