@@ -6,24 +6,26 @@ var isFlipped;
 var coordenadaX;
 var coordenadaY;
 var vidas = 3;
-var tempo = 10;
+var tempo = 15;
 var cronometro;
+var nivel;
+var tempoApareceMosca;
+
 
 
 //Modificadores de atributos
+nivel = window.location.search;
+nivel = nivel.replace('?', '');
 
-cronometro = setInterval(
-    function() {
-        if (tempo < 0) {
-            clearInterval(cronometro);
-            window.location.href = 'vitoria.html';
-        } else {
-            document.getElementById('tempo').innerHTML = tempo;
-            tempo--;
-        }
-    }, 1000
-);
+if (nivel == 'normal') {
+    tempoApareceMosca = 1500;
+} else if (nivel == 'dificil') {
+    tempoApareceMosca = 1000;
+} else if (nivel == 'muitodificil') {
+    tempoApareceMosca = 750; 
+}
 
+console.log(tempoApareceMosca);
 
 //Funções
 
@@ -102,3 +104,15 @@ function ControlarMoscas() {
         document.body.appendChild(mosca);
     }
 }
+
+cronometro = setInterval(
+    function() {
+        if (tempo < 0) {
+            clearInterval(cronometro);
+            window.location.href = 'vitoria.html';
+        } else {
+            document.getElementById('tempo').innerHTML = tempo;
+            tempo--;
+        }
+    }, 1000
+);
