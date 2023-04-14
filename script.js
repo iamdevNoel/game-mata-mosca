@@ -14,9 +14,14 @@ var tempoApareceMosca;
 
 
 //Modificadores de atributos
+
+/*Recupera a url com '?' seguido do nivel escolhido pelo usuário
+no index.html*/
 nivel = window.location.search;
+//retira o ? para armazenar somente o nível 
 nivel = nivel.replace('?', '');
 
+//entrega o nivel ao setInterval scriptado no arquivo game.html
 if (nivel == 'normal') {
     tempoApareceMosca = 1500;
 } else if (nivel == 'dificil') {
@@ -25,7 +30,7 @@ if (nivel == 'normal') {
     tempoApareceMosca = 750; 
 }
 
-console.log(tempoApareceMosca);
+
 
 //Funções
 

@@ -49,6 +49,9 @@
             nivel = document.getElementById('nivel').value;
 
             if (nivel != '') {
+                /*resgata o nível selecionado pelo usuário 
+                e encaminha essa informação para ser tratada em outra url
+                ex: ?facil */
                 window.location.href = 'game.html?' + nivel;
             } else {
                 return false;
